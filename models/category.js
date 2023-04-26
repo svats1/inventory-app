@@ -7,6 +7,7 @@ const categorySchema = new Schema({
   description: { type: String, required: true },
 });
 
+// Create a virtual for the url
 categorySchema.virtual("url").get(function () {
   return `/category/${this._id}`;
 });
