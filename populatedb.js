@@ -10,7 +10,6 @@ const Item = require("./models/Item");
 
 // const Genre = require("./models/genre");
 
-// const genres = [];
 const categories = [];
 
 const mongoose = require("mongoose");
