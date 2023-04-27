@@ -65,15 +65,13 @@ async function itemCreate(
 
 async function createCategories() {
   console.log("Adding Categories");
-  await Promise.all([
-    categoryCreate("Strings", "Stringed instruments"),
-    categoryCreate("Keys", "Piano, Keyboards, Accordion, etc."),
-    categoryCreate(
-      "Percussion",
-      "Drums, Snares, Tabla, Percussive Instruments, etc."
-    ),
-    categoryCreate("Wind", "Trumpets, Saxophones, Flutes, etc."),
-  ]);
+  await categoryCreate("Strings", "Stringed instruments");
+  await categoryCreate("Keys", "Piano, Keyboards, Accordion, etc.");
+  await categoryCreate(
+    "Percussion",
+    "Drums, Snares, Tabla, Percussive Instruments, etc."
+  );
+  await categoryCreate("Wind", "Trumpets, Saxophones, Flutes, etc.");
 }
 
 async function createItems() {
