@@ -6,7 +6,7 @@ block content
     ul 
         for each in categories
             li #{each.name}
-            a(href="/catalog/items/:#{each.name}") Link
+            a(href=`/catalog/items/${each.name}`) Link
             br
 
     a(href="/catalog/items") Show me everything  
