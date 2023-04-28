@@ -23,13 +23,13 @@ exports.keys_list = asyncHandler(async (req, res) => {
 });
 
 // Display all items in category 'Guitar'
-exports.guitar_list = asyncHandler(async (req, res) => {
-  const allGuitars = await Item.find({ category: req.params.id }, "name")
+exports.Strings_list = asyncHandler(async (req, res) => {
+  const allStrings = await Item.find({ category: req.params.id }, "name")
     .sort({ name: 1 })
     .exec();
-  res.render("guitar_list", {
-    title: "Guitars",
-    items: allGuitars,
+  res.render("strings_list", {
+    title: "Strings",
+    items: allStrings,
   });
 });
 
