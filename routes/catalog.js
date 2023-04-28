@@ -11,6 +11,8 @@ router.get("/", category_controller.category_list);
 
 router.get("/items", item_controller.item_list);
 
+router.get("/items/Keys", item_controller.keys_list);
+
 // router.get("/", category_controller.category_list);
 // router.get("/", category_controller.category_list);
 

@@ -10,3 +10,14 @@ exports.item_list = asyncHandler(async (req, res) => {
     items: allItems,
   });
 });
+
+// Display all items in category 'Keys'
+exports.keys_list = asyncHandler(async (req, res) => {
+  const allKeys = await Item.find({ category: req.params.id }, "name")
+    .sort({ name: 1 })
+    .exec();
+  res.render("keys_list", {
+    title: "Keys",
+    items: allKeys,
+  });
+});
