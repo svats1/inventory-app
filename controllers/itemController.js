@@ -21,3 +21,36 @@ exports.keys_list = asyncHandler(async (req, res) => {
     items: allKeys,
   });
 });
+
+// Display all items in category 'Guitar'
+exports.guitar_list = asyncHandler(async (req, res) => {
+  const allGuitars = await Item.find({ category: req.params.id }, "name")
+    .sort({ name: 1 })
+    .exec();
+  res.render("guitar_list", {
+    title: "Guitars",
+    items: allGuitars,
+  });
+});
+
+// Display all items in category 'Drums'
+exports.drums_list = asyncHandler(async (req, res) => {
+  const allDrums = await Item.find({ category: req.params.id }, "name")
+    .sort({ name: 1 })
+    .exec();
+  res.render("drums_list", {
+    title: "Drums",
+    items: allDrums,
+  });
+});
+
+// Display all items in category 'Wind'
+exports.wind_list = asyncHandler(async (req, res) => {
+  const allWind = await Item.find({ category: req.params.id }, "name")
+    .sort({ name: 1 })
+    .exec();
+  res.render("wind_list", {
+    title: "Wind",
+    items: allWind,
+  });
+});

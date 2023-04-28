@@ -12,6 +12,9 @@ router.get("/", category_controller.category_list);
 router.get("/items", item_controller.item_list);
 
 router.get("/items/Keys", item_controller.keys_list);
+router.get("/items/Guitar", item_controller.guitar_list);
+router.get("/items/Drums", item_controller.drums_list);
+router.get("/items/Wind", item_controller.wind_list);
 
 // router.get("/", category_controller.category_list);
 // router.get("/", category_controller.category_list);
