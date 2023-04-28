@@ -5,10 +5,9 @@ block content
     h2 #{title}
     ul 
         for each in categories
-            li #{each.name}
-            a(href=`/catalog/items/${each.name}`) Link
+            li 
+                a(href=`/catalog/items/${each.name}`) #{each.name}
             br
 
     a(href="/catalog/items") Show me everything  
-
 
