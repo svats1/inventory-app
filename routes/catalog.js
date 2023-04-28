@@ -9,6 +9,11 @@ const item_controller = require("../controllers/itemController");
 
 router.get("/", category_controller.category_list);
 
+router.get("/items", item_controller.item_list);
+
+// router.get("/", category_controller.category_list);
+// router.get("/", category_controller.category_list);
+
 // router.get("/item", item_controller.item_list);
 
 // router.post("/item", item_controller.item_create);

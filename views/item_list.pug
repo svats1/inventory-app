@@ -3,9 +3,6 @@ extends layout
 block content 
     h1 #{title}
     br
-    for each in categories
+    for each in items
         p #{each.name}
-
-    a(href="/catalog/items") Show me everything  
-
 
