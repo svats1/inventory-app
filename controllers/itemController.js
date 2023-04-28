@@ -34,13 +34,13 @@ exports.guitar_list = asyncHandler(async (req, res) => {
 });
 
 // Display all items in category 'Drums'
-exports.drums_list = asyncHandler(async (req, res) => {
-  const allDrums = await Item.find({ category: req.params.id }, "name")
+exports.percussion_list = asyncHandler(async (req, res) => {
+  const allPercussion = await Item.find({ category: req.params.id }, "name")
     .sort({ name: 1 })
     .exec();
-  res.render("drums_list", {
-    title: "Drums",
-    items: allDrums,
+  res.render("percussion_list", {
+    title: "Percussion",
+    items: allPercussion,
   });
 });
 
