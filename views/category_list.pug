@@ -1,10 +1,12 @@
 extends layout 
 
 block content 
-    h1 #{title}
-    br
-    for each in categories
-        p #{each.name}
+    h1 Welcome to Music Shop
+    h2 #{title}
+    ul 
+        for each in categories
+            li #{each.name}
+            br
 
     a(href="/catalog/items") Show me everything  
 
