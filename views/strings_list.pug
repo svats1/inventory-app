@@ -2,5 +2,9 @@ extends layout
 
 block content 
     h1 Strings list
-
+    p #{title} are : 
+        ul
+            for each in items
+                    li #{each.name} - #{each.description}
+                    br
     a(href="/") Take me Home

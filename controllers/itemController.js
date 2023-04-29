@@ -37,9 +37,23 @@ exports.keys_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Guitar'
+// Display all items in category 'Strings'
 exports.strings_list = asyncHandler(async (req, res) => {
-  const allStrings = await Item.find({ category: req.params.id }, "name")
+  const allStrings = await Item.aggregate([
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $match: {
+        "category.name": "Strings",
+      },
+    },
+  ])
     .sort({ name: 1 })
     .exec();
   res.render("strings_list", {
@@ -48,9 +62,23 @@ exports.strings_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Drums'
+// Display all items in category 'Percussion'
 exports.percussion_list = asyncHandler(async (req, res) => {
-  const allPercussion = await Item.find({ category: req.params.id }, "name")
+  const allPercussion = await Item.aggregate([
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $match: {
+        "category.name": "Percussion",
+      },
+    },
+  ])
     .sort({ name: 1 })
     .exec();
   res.render("percussion_list", {
@@ -61,7 +89,21 @@ exports.percussion_list = asyncHandler(async (req, res) => {
 
 // Display all items in category 'Wind'
 exports.wind_list = asyncHandler(async (req, res) => {
-  const allWind = await Item.find({ category: req.params.id }, "name")
+  const allWind = await Item.aggregate([
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $match: {
+        "category.name": "Wind",
+      },
+    },
+  ])
     .sort({ name: 1 })
     .exec();
   res.render("wind_list", {
