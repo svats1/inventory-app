@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 
 // Get all items
 exports.item_list = asyncHandler(async (req, res) => {
-  const allItems = await Item.find({}, "name").sort({ name: 1 }).exec();
+  const allItems = await Item.find({}, "name price quantity")
+    .sort({ name: 1 })
+    .exec();
   res.render("item_list", {
     title: "Items",
     items: allItems,
