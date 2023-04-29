@@ -113,3 +113,28 @@ exports.wind_list = asyncHandler(async (req, res) => {
     items: allWind,
   });
 });
+
+// POST method for creating new item
+exports.item_create_post = asyncHandler(async (req, res) => {
+  const { name, description, price, category, brand, model, quantity } =
+    req.body;
+  const newItem = new Item({
+    name,
+    description,
+    price,
+    category,
+    brand,
+    model,
+    quantity,
+  });
+  await newItem.save();
+  res.redirect("/items");
+});
+
+// GET method for creating new item
+exports.item_create_get = asyncHandler(async (req, res) => {
+  // const allCategories = await Category.find({}, "name");
+  res.render("item_form", {
+    title: "Create Item",
+  });
+});
