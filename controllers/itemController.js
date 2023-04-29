@@ -1,6 +1,7 @@
 const Category = require("../models/category");
 const Item = require("../models/item");
 const asyncHandler = require("express-async-handler");
+const mongoose = require("mongoose");
 
 // Display all categories
 exports.item_list = asyncHandler(async (req, res) => {
@@ -13,7 +14,21 @@ exports.item_list = asyncHandler(async (req, res) => {
 
 // Display all items in category 'Keys'
 exports.keys_list = asyncHandler(async (req, res) => {
-  const allKeys = await Item.find({ category: req.params.id }, "name")
+  const allKeys = await Item.aggregate([
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $match: {
+        "category.name": "Keys",
+      },
+    },
+  ])
     .sort({ name: 1 })
     .exec();
   res.render("keys_list", {
