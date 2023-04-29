@@ -5,6 +5,11 @@ block content
     p #{title} are : 
         ul
             for each in items
-                    li #{each.name} - #{each.description}
+                    li #{each.name}
+                    p Description : #{each.description}
+                    p Price : $#{each.price}
+                    p Brand : #{each.brand}
+                    p Model : #{each.model}
+                    p Quantity : #{each.quantity}
                     br
     a(href="/") Take me Home

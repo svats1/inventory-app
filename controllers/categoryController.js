@@ -8,7 +8,7 @@ exports.category_list = asyncHandler(async (req, res) => {
     .sort({ name: 1 })
     .exec();
   res.render("category_list", {
-    title: "Category List",
+    title: "Instrument Category List",
     categories: allCategories,
   });
 });
