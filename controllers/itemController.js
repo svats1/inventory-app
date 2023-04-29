@@ -3,7 +3,7 @@ const Item = require("../models/item");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 
-// Display all categories
+// Get all items
 exports.item_list = asyncHandler(async (req, res) => {
   const allItems = await Item.find({}, "name").sort({ name: 1 }).exec();
   res.render("item_list", {
@@ -12,7 +12,7 @@ exports.item_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Keys'
+// Get all items in category 'Keys'
 exports.keys_list = asyncHandler(async (req, res) => {
   const allKeys = await Item.aggregate([
     {
@@ -37,7 +37,7 @@ exports.keys_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Strings'
+// Get all items in category 'Strings'
 exports.strings_list = asyncHandler(async (req, res) => {
   const allStrings = await Item.aggregate([
     {
@@ -62,7 +62,7 @@ exports.strings_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Percussion'
+// Get all items in category 'Percussion'
 exports.percussion_list = asyncHandler(async (req, res) => {
   const allPercussion = await Item.aggregate([
     {
@@ -87,7 +87,7 @@ exports.percussion_list = asyncHandler(async (req, res) => {
   });
 });
 
-// Display all items in category 'Wind'
+// Get all items in category 'Wind'
 exports.wind_list = asyncHandler(async (req, res) => {
   const allWind = await Item.aggregate([
     {
