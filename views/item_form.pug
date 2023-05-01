@@ -3,27 +3,35 @@ extends layout
 block content 
     h1 #{title}
 
-    form(action="/catalog/items", method="post")
+    form(action="/catalog/items/added", method="post")
         p
         | Name 
-        input(type="text")
+        input(type="text", name="name", id="name", required)
         br
         | Description 
-        input(type="text")
+        input(type="text", name="description", id="description", minLength = 10 ,required)
         br
-        | Category 
-        input(type="text")
+        p Category
+            br
+            input(type="radio", name="category", required)
+            | Keys
+            input(type="radio", name="category",)
+            | Strings
+            input(type="radio", name="category")
+            | Percussion
+            input(type="radio", name="category")
+            | Wind
         br
         | Price 
-        input(type="text")
+        input(type="number", name="price", id="price", required)
         br
         | Brand 
-        input(type="text")
+        input(type="text", name="brand", id="brand", required)
         br
         | Model 
-        input(type="text")
+        input(type="text", name="model", id="model", required)
         br
         | Quantity 
-        input(type="text")
+        input(type="number", name="quantity", id="quantity", required)
         br
         input(type="submit", value="Add Instrument")

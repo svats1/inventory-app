@@ -116,19 +116,20 @@ exports.wind_list = asyncHandler(async (req, res) => {
 
 // POST method for creating new item
 exports.item_create_post = asyncHandler(async (req, res) => {
-  const { name, description, price, category, brand, model, quantity } =
-    req.body;
-  const newItem = new Item({
-    name,
-    description,
-    price,
-    category,
-    brand,
-    model,
-    quantity,
-  });
-  await newItem.save();
-  res.redirect("/items");
+  console.log(req.body);
+  // const { name, description, price, category, brand, model, quantity } =
+  //   req.body;
+  // const newItem = new Item({
+  //   name,
+  //   description,
+  //   price,
+  //   category,
+  //   brand,
+  //   model,
+  //   quantity,
+  // });
+  // await newItem.save();
+  // res.redirect("/items/newAdded");
 });
 
 // GET method for creating new item
@@ -137,4 +138,8 @@ exports.item_create_get = asyncHandler(async (req, res) => {
   res.render("item_form", {
     title: "Create Item",
   });
+});
+
+exports.item_added_get = asyncHandler(async (req, res) => {
+  res.send("Item added");
 });
