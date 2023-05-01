@@ -2,6 +2,10 @@ const Category = require("../models/category");
 const Item = require("../models/item");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
+const express = require("express");
+const app = express();
+
+app.use(express.json());
 
 // Get all items
 exports.item_list = asyncHandler(async (req, res) => {
@@ -141,5 +145,6 @@ exports.item_create_get = asyncHandler(async (req, res) => {
 });
 
 exports.item_create_post = asyncHandler(async (req, res) => {
-  res.send(`Item received - ${req.body.name}`);
+  console.log(req.body);
+  res.send(req.body);
 });
