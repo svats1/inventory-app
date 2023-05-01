@@ -3,7 +3,7 @@ extends layout
 block content 
     h1 #{title}
 
-    form(action="/catalog/items/added", method="post")
+    form(action="/catalog/items/addNew", method="post")
         p
         | Name 
         input(type="text", name="name", id="name", required)

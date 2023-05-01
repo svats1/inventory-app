@@ -140,6 +140,6 @@ exports.item_create_get = asyncHandler(async (req, res) => {
   });
 });
 
-exports.item_added_get = asyncHandler(async (req, res) => {
-  res.send("Item added");
+exports.item_create_post = asyncHandler(async (req, res) => {
+  res.send(`Item received - ${req.body.name}`);
 });
