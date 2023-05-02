@@ -118,24 +118,6 @@ exports.wind_list = asyncHandler(async (req, res) => {
   });
 });
 
-// POST method for creating new item
-exports.item_create_post = asyncHandler(async (req, res) => {
-  console.log(req.body);
-  // const { name, description, price, category, brand, model, quantity } =
-  //   req.body;
-  // const newItem = new Item({
-  //   name,
-  //   description,
-  //   price,
-  //   category,
-  //   brand,
-  //   model,
-  //   quantity,
-  // });
-  // await newItem.save();
-  // res.redirect("/items/newAdded");
-});
-
 // GET method for creating new item
 exports.item_create_get = asyncHandler(async (req, res) => {
   // const allCategories = await Category.find({}, "name");
@@ -144,7 +126,22 @@ exports.item_create_get = asyncHandler(async (req, res) => {
   });
 });
 
+// POST method for creating new item
 exports.item_create_post = asyncHandler(async (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+  const category_id = await Category.findOne(
+    { name: req.body.category },
+    "_id"
+  );
+  const { name, description, price, brand, model, quantity } = req.body;
+  const newItem = new Item({
+    name,
+    description,
+    price,
+    category: category_id._id,
+    brand,
+    model,
+    quantity,
+  });
+  newItem.save();
+  res.redirect("/catalog/items");
 });
