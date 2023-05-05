@@ -148,7 +148,7 @@ exports.item_create_post = asyncHandler(async (req, res) => {
   res.redirect("/catalog/items");
 });
 
-// Delete method for deleting item
+// Delete method GET for deleting item
 exports.item_delete_get = asyncHandler(async (req, res) => {
   const answer = readline.question("Sure you want to delete this item? (y/n) ");
   if (answer === "y") {
