@@ -16,6 +16,7 @@ exports.item_list = asyncHandler(async (req, res) => {
     title: "Items",
     items: allItems,
   });
+  console.log(req.body);
 });
 
 // Get all items in category 'Keys'
@@ -143,5 +144,12 @@ exports.item_create_post = asyncHandler(async (req, res) => {
     quantity,
   });
   newItem.save();
+  res.redirect("/catalog/items");
+});
+
+// Delete method for deleting item
+exports.item_delete_get = asyncHandler(async (req, res) => {
+  const item_id = req.params.id;
+  await Item.findByIdAndDelete(item_id);
   res.redirect("/catalog/items");
 });
