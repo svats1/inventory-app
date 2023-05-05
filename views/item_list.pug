@@ -7,5 +7,6 @@ block content
         p #{each.name}
             li Price : $#{each.price}
             li Qty : #{each.quantity}
-
+            li 
+                a(href=`/catalog/items/delete/${each.id}`) Delete item
     a(href="/") Take me Home
