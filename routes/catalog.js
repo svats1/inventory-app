@@ -22,7 +22,7 @@ router.get("/items/Wind", item_controller.wind_list);
 router.get("/items/addNew", item_controller.item_create_get);
 router.post("/items/addNew", item_controller.item_create_post);
 
-// // Routes for edit item page
+// Routes for edit item page
 // router.get("/items/edit/:id", item_controller.item_edit_get);
 // router.post("/items/edit/:id", item_controller.item_edit_post);
 
@@ -34,8 +34,8 @@ router.get("/items/delete/:id", item_controller.item_delete_get);
 // router.get("/items/search", item_controller.item_search_get);
 // router.post("/items/search", item_controller.item_search_post);
 
-// // Routes for item details page
-// router.get("/items/details/:id", item_controller.item_details_get);
+// Routes for item details page
+router.get("/items/details/:id", item_controller.item_details_get);
 // router.post("/items/details/:id", item_controller.item_details_post);
 
 // // Routes for add to cart page

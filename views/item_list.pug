@@ -8,5 +8,9 @@ block content
             li Price : $#{each.price}
             li Qty : #{each.quantity}
             li 
+                a(href=`/catalog/items/details/${each.id}`) Detail
+            //- li 
+            //-     a(href=`/catalog/items/edit/${each.id}`) Edit item
+            li 
                 a(href=`/catalog/items/delete/${each.id}`) Delete item
     a(href="/") Take me Home
