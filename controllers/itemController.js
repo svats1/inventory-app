@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+const readline = require("readline-sync");
 
 app.use(express.json());
 
@@ -149,9 +150,14 @@ exports.item_create_post = asyncHandler(async (req, res) => {
 
 // Delete method for deleting item
 exports.item_delete_get = asyncHandler(async (req, res) => {
-  const item_id = req.params.id;
-  await Item.findByIdAndDelete(item_id);
-  res.redirect("/catalog/items");
+  const answer = readline.question("Sure you want to delete this item? (y/n) ");
+  if (answer === "y") {
+    const item_id = req.params.id;
+    await Item.findByIdAndDelete(item_id);
+    res.redirect("/catalog/items");
+  } else {
+    res.redirect("/catalog/items");
+  }
 });
 
 // // Edit method for editing item
