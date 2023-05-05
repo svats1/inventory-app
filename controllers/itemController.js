@@ -167,9 +167,14 @@ exports.item_delete_get = asyncHandler(async (req, res) => {
 // Item detail GET method for each item
 exports.item_details_get = asyncHandler(async (req, res) => {
   const item_id = req.params.id;
+  const category_name = await Category.findOne(
+    { id: item_id.category },
+    "name"
+  );
   const item = await Item.findById(item_id);
   res.render("item_detail", {
     title: "Item Detail",
     item,
+    category_name,
   });
 });
