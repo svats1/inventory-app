@@ -4,13 +4,15 @@ block content
     h1 #{title} in Inventory
     br
     for each in items
-        p #{each.name}
-            li Price : $#{each.price}
-            li Qty : #{each.quantity}
-            li 
-                a(href=`/catalog/items/details/${each.id}`) Detail
-            //- li 
-            //-     a(href=`/catalog/items/edit/${each.id}`) Edit item
-            li 
-                a(href=`/catalog/items/delete/${each.id}`) Delete item
+        p #[a(href=`/catalog/items/details/${each.id}`) #{each.name}]
+            
+            ul 
+                li Price : $#{each.price}
+                li Qty : #{each.quantity}
+                //- li 
+                //-     a(href=`/catalog/items/details/${each.id}`) Detail
+                //- li 
+                //-     a(href=`/catalog/items/edit/${each.id}`) Edit item
+                li 
+                    a(href=`/catalog/items/delete/${each.id}`) Delete
     a(href="/") Take me Home
