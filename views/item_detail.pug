@@ -10,4 +10,7 @@ block content
     p Model : #{item.model} 
     p Price : #{item.price}
 
+    a(href=`/catalog/items/edit/${item.id}`) Edit Item
+    br
+
     a(href="/catalog/items") Back to inventory

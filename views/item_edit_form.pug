@@ -1,0 +1,37 @@
+extends layout 
+
+block content
+    h1 Edit Item #{item.name}
+
+    form(action="/catalog/items/addNew", method="post")
+        p
+        | Name 
+        input(type="text", name="name", id="name", value = item.name, required)
+        br
+        | Description 
+        input(type="text", name="description", id="description", value = item.description , minLength = 10 , required)
+        br
+        p Category
+            br
+            input(type="radio", name="category", value="Keys", required)
+            | Keys
+            input(type="radio", name="category", value="Strings")
+            | Strings
+            input(type="radio", name="category", value="Percussion")
+            | Percussion
+            input(type="radio", name="category", value="Wind")
+            | Wind
+        br
+        | Price 
+        input(type="number", name="price", id="price", value = item.price , required)
+        br
+        | Brand 
+        input(type="text", name="brand", id="brand", value = item.brand , required)
+        br
+        | Model 
+        input(type="text", name="model", id="model", value = item.model, required)
+        br
+        | Quantity 
+        input(type="number", name="quantity", id="quantity", value = item.quantity, required)
+        br
+        input(type="submit", value="Edit Instrument")

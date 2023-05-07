@@ -23,7 +23,7 @@ router.get("/items/addNew", item_controller.item_create_get);
 router.post("/items/addNew", item_controller.item_create_post);
 
 // Routes for edit item page
-// router.get("/items/edit/:id", item_controller.item_edit_get);
+router.get("/items/edit/:id", item_controller.item_edit_get);
 // router.post("/items/edit/:id", item_controller.item_edit_post);
 
 // // Routes for delete item page

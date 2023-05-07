@@ -160,15 +160,17 @@ exports.item_delete_get = asyncHandler(async (req, res) => {
   }
 });
 
-// // Edit method for editing item
-// exports.item_edit_get = asyncHandler(async (req, res) => {
-//   const item_id = req.params.id;
-//   const item = await Item.findById(item_id);
-//   res.render("item_form", {
-//     title: "Edit Item",
-//     item,
-//   });
-// });
+// Edit GET method for editing item
+exports.item_edit_get = asyncHandler(async (req, res) => {
+  const item_id = req.params.id;
+  const item = await Item.findById(item_id);
+  const category = await Category.findOne({ _id: item.category });
+  res.render("item_edit_form", {
+    title: "Edit Item",
+    item,
+    category,
+  });
+});
 
 // Item detail GET method for each item
 exports.item_details_get = asyncHandler(async (req, res) => {
@@ -180,4 +182,26 @@ exports.item_details_get = asyncHandler(async (req, res) => {
     item,
     category,
   });
+});
+
+// Edit PUT method for editing item
+
+exports.item_edit_post = asyncHandler(async (req, res) => {
+  const item_id = req.params.id;
+  const { name, description, price, brand, model, quantity } = req.body;
+  const category_id = await Category.findOne(
+    { name: req.body.category },
+    "_id"
+  );
+  const updatedItem = {
+    name,
+    description,
+    price,
+    category: category_id._id,
+    brand,
+    model,
+    quantity,
+  };
+  await Item.findByIdAndUpdate(item_id, updatedItem);
+  res.redirect("/catalog/items");
 });
