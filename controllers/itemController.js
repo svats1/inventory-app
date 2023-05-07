@@ -184,7 +184,7 @@ exports.item_details_get = asyncHandler(async (req, res) => {
   });
 });
 
-// Edit PUT method for editing item
+// Edit POST method for editing item
 exports.item_edit_post = asyncHandler(async (req, res) => {
   const item_id = req.params.id;
   const { name, description, price, brand, model, quantity } = req.body;
