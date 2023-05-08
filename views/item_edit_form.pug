@@ -3,7 +3,7 @@ extends layout
 block content
     h1 Edit Item #{item.name}
 
-    form(action="/catalog/items/addNew", method="post")
+    form(action=`/catalog/items/edit/${id}`, method="post")
         p
         | Name 
         input(type="text", name="name", id="name", value = item.name, required)

@@ -154,22 +154,8 @@ exports.item_delete_get = asyncHandler(async (req, res) => {
   if (answer === "y") {
     const item_id = req.params.id;
     await Item.findByIdAndDelete(item_id);
-    res.redirect("/catalog/items");
-  } else {
-    res.redirect("/catalog/items");
   }
-});
-
-// Edit GET method for editing item
-exports.item_edit_get = asyncHandler(async (req, res) => {
-  const item_id = req.params.id;
-  const item = await Item.findById(item_id);
-  const category = await Category.findOne({ _id: item.category });
-  res.render("item_edit_form", {
-    title: "Edit Item",
-    item,
-    category,
-  });
+  res.redirect("/catalog/items");
 });
 
 // Item detail GET method for each item
@@ -181,6 +167,19 @@ exports.item_details_get = asyncHandler(async (req, res) => {
     title: "Item Detail",
     item,
     category,
+  });
+});
+
+// Edit GET method for editing item
+exports.item_edit_get = asyncHandler(async (req, res) => {
+  const item_id = req.params.id;
+  const item = await Item.findById(item_id);
+  const category = await Category.findOne({ _id: item.category });
+  res.render("item_edit_form", {
+    title: "Edit Item",
+    item,
+    category,
+    id: item_id,
   });
 });
 
